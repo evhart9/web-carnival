@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Web Carnival: Hangman</title>
+		<link rel="stylesheet" href="./hangman.css">
+	</head>
+
+	<header>
+		<div class="title">
+			<h1>Hangman</h1>
+		</div>
+	</header>
+
+	<body>
+		<div class="intro">
+			<p>Welcome to hangman! A hidden message is displayed below. Select a
+			letter to get started. If the letter is contained in the message, it
+			will be displayed in the message below. If the letter is not in the
+			message, a body part will be added. If you guess the word before
+			the body is complete, you win 3 tickets!</p>
+		</div>
+
+		<main>
+			<div class="leftSide">
+				<div id="letter">A</div>
+				<div id="letter">B</div>
+				<div id="letter">C</div>
+				<div id="letter">D</div>
+				<div id="letter">E</div>
+				<div id="letter">F</div>
+				<div id="letter">G</div>
+				<div id="letter">H</div>
+				<div id="letter">I</div>
+				<div id="letter">J</div>
+				<div id="letter">K</div>
+				<div id="letter">L</div>
+				<div id="letter">M</div>
+				<div id="letter">N</div>
+				<div id="letter">O</div>
+				<div id="letter">P</div>
+				<div id="letter">Q</div>
+				<div id="letter">R</div>
+				<div id="letter">S</div>
+				<div id="letter">T</div>
+				<div id="letter">U</div>
+				<div id="letter">V</div>
+				<div id="letter">W</div>
+				<div id="letter">X</div>
+				<div id="letter">Y</div>
+				<div id="letter">Z</div>
+			</div>
+		
+			<div class="rightSide">
+				This is where the hangman goes!
+			</div>
+		</main>
+
+		<script src="./dictionary.js"></script>
+		<script src="./hangman.js"></script>
+	</body>
+</html>
