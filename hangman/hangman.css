@@ -1,3 +1,9 @@
+/**
+ * Copyright 2023 Evan Earhart [, insert other contributor names here]
+ * 
+ * CSS styling for './hangman.html'.
+ */
+
 body{
 	background-color: lightcoral;
 }
@@ -33,12 +39,12 @@ main{
 	margin: 10px;
 }
 
-#letter {
+.letterButton {
 	width: 24px;
 	height: 24px;
 	border: 1px solid black;
 	
-	font-size: 24px;
+	font-size: 16px;
 	text-align: center;
 	float: left;
 }
