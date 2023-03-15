@@ -1,0 +1,80 @@
+/**
+ * Copyright 2023 Evan Earhart [, insert other contributor names here]
+ * 
+ * CSS styling for './hangman.html'.
+ */
+
+body{
+	background-color: mediumturquoise;
+}
+
+.title{
+	font-size: 24px;
+	text-align: center;
+}
+
+main{
+	display: flex;
+}
+
+
+.board {
+	margin: auto;
+	font-family: Courier New, Courier, monospace;
+	
+}
+
+.openSpace {
+	width: 50px;
+	height: 50px;
+	margin: 0px;
+	color: rgba(0,0,0,0);
+	font-size: 16px;
+	text-align: center;
+	clear: both;
+}
+
+#space1A {
+	border: solid black;
+	border-width: 0px 2px 2px 0px;
+}
+
+#space2A {
+	border: solid black;
+	border-width: 0px 2px 2px 2px;
+}
+
+#space3A {
+	border: solid black;
+	border-width: 0px 0px 2px 2px;
+}
+
+#space1B {
+	border: solid black;
+	border-width: 2px 2px 2px 0px;
+}
+
+#space2B {
+	border: solid black;
+	border-width: 2px;
+}
+
+#space3B {
+	border: solid black;
+	border-width: 2px 0px 2px 2px;
+}
+
+#space1C {
+	border: solid black;
+	border-width: 2px 2px 0px 0px;
+}
+
+#space2C {
+	border: solid black;
+	border-width: 2px 2px 0px 2px;
+}
+
+#space3C {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}

@@ -1,0 +1,47 @@
+<!--
+	Copyright 2023 Samantha Bowsher [, insert other contributor names here]
+
+	HTML page for the Web Carnival Tic-Tac-Toe game.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Web Carnival: Tic-Tac-Toe</title>
+		<link rel="stylesheet" href="./tic-tac-toe.css">
+	</head>
+
+	<body>
+		<header>
+			<div class="title">
+				<h1>Tic-Tac-Toe</h1>
+			</div>
+		</header>
+
+		<div class="intro">
+			<p>
+				Welcome to tic-tac-toe! A board is displayed below. Select a
+				space to get started. Once you or the opponent gets 3 in a row,
+				or you run out of spaces, the game ends. If you win, you get 3 tickets!
+			</p>
+		</div>
+
+		<main id="gameArea">
+			<div class="board">
+				<p>Claim squares:</p>
+
+
+				<button class="openSpace" id="space1A" onclick="playerTurn('space1A')">_</button><button class="openSpace" id="space2A" onclick="playerTurn('space2A')">_</button><button class="openSpace" id="space3A" onclick="playerTurn('space3A')">_</button><br />
+				<button class="openSpace" id="space1B" onclick="playerTurn('space1B')">_</button><button class="openSpace" id="space2B" onclick="playerTurn('space2B')">_</button><button class="openSpace" id="space3B" onclick="playerTurn('space3B')">_</button><br />
+				<button class="openSpace" id="space1C" onclick="playerTurn('space1C')">_</button><button class="openSpace" id="space2C" onclick="playerTurn('space2C')">_</button><button class="openSpace" id="space3C" onclick="playerTurn('space3C')">_</button>
+
+			</div>
+
+		</main>
+
+		<script src="./tic-tac-toe.js"></script>
+	</body>
+</html>
