@@ -42,111 +42,45 @@ function arrayToString(array) {
 	return resultString;
 }
 
-// Total number of characters that still needs to be guessed
-let totalToGuess = 0;
+//Total number of characters that still needs to be guessed. If this number hits zero and neither
+//side has won, it will result in a tie.
 let spacesLeft = 9;
 
-// All the letters the user has guessed (correct and incorrect)
-let guessed = [];
+//Keep track of whether each space has been claimed and who it has been claimed by
 let spaces = ["space1A", "space2A", "space3A", "space1B", "space2B", "space3B",
 			"space1C", "space2C", "space3C"];
 let openSpaces = [...spaces];
+
+//Boolean arrays filled with false. If a square is claimed, the index number corresponding with the slot in the 
+//relevant array will be set to true. This is done to make checking win conditions easier.
 let claimedX = [false, false, false, false, false, false, false, false, false];
 let claimedO = [false, false, false, false, false, false, false, false, false];
 
-let guessesLeft = 6;
-let result = fillArray(phrase);
-let currentLetter = "";
-
-// Initializes areas before the game "starts"
-document.getElementById("riddle").innerHTML = arrayToString(result);
-document.getElementById("guessesLeft").innerHTML = "Incorrect Guesses Left: " +
-		guessesLeft;
-document.getElementById("message").innerHTML = "\n";
-
-/**
- * Based on the phrase, for each character, fills an array depending on the
- * character at that position. If there is an alpha character at that position,
- * a "_" is added to the array and if there is a space at that position, a " "
- * is added to the array.
- * Also, keeps track of the number of alpha characters that exist in phrase by
- * increasing totalToGuess by one for each character.
- * 
- * For example: "TWO WORDS" -> ["_", "_", "_", " ", "_", "_", "_", "_", "_"]
- * 
- * @param {string} phrase The phrase the array is built from.
- * @returns An array full of "_" or " " for each character position in the
- * phrase.
- */
-function fillArray(phrase) {
-	let array = [];
-	for (let i = 0; i < phrase.length; i++) {
-		if (phrase.charAt(i) === " ") {
-			array[i] = " ";
-		} else {
-			array[i] = "_";
-			totalToGuess++;
-		}
-	}
-	return array;
-}
-
-/**
- * This method is the main controller of the game and is called with each
- * button press by the user. It checks whether the user has already guessed a
- * letter and if so, takes no further action. If the letter hasn't been guessed
- * yet and is contained in the phrase, it is printed to the "riddle" element. If
- * the letter hasn't been guessed yet and is not contained in the phrase,
- * guessesLeft is decreased, printed to the "guessesLeft" element, and a body
- * part is drawn (TODO). If the user has won or lost, an alert is displayed,
- * tickets are added if necessary (TODO), and the user is redirected to the home
- * page.
- * 
- * @param {string} letter The letter entered by the user to process.
- */
-function processLetter(letter) {
-	currentLetter = letter;
-	if (alreadyGuessed()) {
-		document.getElementById("message").innerHTML =
-				"Letter Already Guessed!";
-	} else if (checkLetter()) {
-		document.getElementById("message").innerHTML = "";  // Clears message
-		document.getElementById("riddle").innerHTML = arrayToString(result);
-	} else {
-		document.getElementById("guessesLeft").innerHTML =
-				"Incorrect Guesses Left: " + guessesLeft;
-	}
-
-	if (totalToGuess === 0) {
-		userWon();
-	} else if (guessesLeft === 0) {
-		userLost();
-	}
-
-	guessed.push(currentLetter);
-}
-
 /**
  * This is the core method for tic-tac-toe. If the player presses
- * a button, run this method.
+ * a button, run this method. It will attempt to claim the space, and if it does so successfully,
+ * it will then run aiTurn(). If the space isn't open, it will exit immediately.
+ * 
+ * @param space the ID of the space the player clicked on.
  * */
 function playerTurn(space) {
+	//Ensure the space isn't already claimed. If it is, return immediately.
 	let open = isAvailable(space);
 	if (!open) {
 		return;
 	} 
 
+	//Claim the space
 	claimSpace(space, true);
-	//Check that the space isn't claimed
-	//if it is, break.
-	//if it isn't, claim the space
+
 	//Run aiTurn()
 	aiTurn();
 }
 
 /**
  * Helper method for playerTurn(). Runs after a successful turn if 
- * the game hasn't ended, placing an o instead of an x.
+ * the game hasn't ended, placing an o instead of an x to represent the ai.
+ * Currently, the ai picks a random open square.
  * */
 function aiTurn() {
 	let max = openSpaces.length;
@@ -160,13 +94,19 @@ function aiTurn() {
  * If this causes there to be three claimed spaces in a row,
  * determine who won. If the number of available spaces reaches
  * 0, end the game in a tie.
+ * 
+ * @param space The ID of the space to be claimed.
+ * @param isX Boolean value to track which side gets the space.
  * */
 function claimSpace(space, isX) {
-	//TODO
 	let gameEnd = false;
+
+	//Remove the space from open spaces
 	let removal = openSpaces.indexOf(space);
 	openSpaces.splice(removal, 1);
 
+	//Set the space to the appropriate character and add it to the corresponding claimed spaces.
+	//Then, check if that causes the game to end.
 	if (isX) {
 		document.getElementById(space).innerHTML = 'X';
 		document.getElementById(space).style.color = "black";
@@ -179,6 +119,7 @@ function claimSpace(space, isX) {
 		gameEnd = checkWin(claimedO);
 	}
 
+	//If the game is over, determine the winner and run the corresponding method.
 	if (gameEnd) {
 		if (isX)
 			userWon();
@@ -186,11 +127,9 @@ function claimSpace(space, isX) {
 			userLost();
 	}
 
+	//Decrement spacesLeft, then check whether there is a tie.
 	spacesLeft--;
-	//Claim space
 
-	//Check win/loss
-	//Check spaces left
 	if (spacesLeft == 0) {
 		userTied();
 	}
@@ -198,6 +137,12 @@ function claimSpace(space, isX) {
 	//If gameplay continues, continue game.
 }
 
+/**
+ * Helper method for playerTurn()
+ * Returns true if the space does not contain an X or an O, false otherwise.
+ * @param spaceID The space to check
+ * @returns boolean true if the space does not contain an X or an O.
+ * */
 function isAvailable(spaceID) {
 	let spaceText = document.getElementById(spaceID).innerHTML;
 	if (spaceText === "X") {
@@ -208,6 +153,15 @@ function isAvailable(spaceID) {
 	return true;
 }
 
+/**
+ * Helper method for claimSpace()
+ * Runs through each possible 3-in-a-row sequence, and if any of them are
+ * owned by player, returns true. Otherwise returns false.
+ * 
+ * @param player Boolean array of claimed spaces. If a space is claimed by the player, 
+ * its respective slot will be true. Otherwise, it will be false.
+ * @returns true if any win condition is met, otherwise returns false.
+ * */
 function checkWin(player) {
 	if (player[0] && player[1] && player[2])
 		return true;
@@ -227,49 +181,6 @@ function checkWin(player) {
 		return true;
 	else
 		return false;
-}
-
-/**
- * Helper method for processLetter().
- * Checks the array of previously guessed letters to determine if the current
- * letter has been previously guessed. If it has, return true. Otherwise, return
- * false.
- * 
- * @returns true if the current letter has been previously guessed, false
- * otherwise.
- */
-function alreadyGuessed() {
-	for (let i = 0; i < guessed.length; i++) {
-		if (currentLetter.charAt(0) === guessed[i].charAt(0)) {
-			return true;
-		}
-	}
-	return false;
-}
-
-/**
- * Helper method for processLetter().
- * Checks if the current letter is contained in the phrase. If so, for each time
- * it appears in the phrase, totalToGuess is decreased by one. If the current
- * letter is not contained in the phrase, guessesLeft is decreased by one. 
- * Finally, if the current letter is found in the phrase, the method returns
- * true, otherwise the method returns false.
- * 
- * @returns true if the letter is contained in the phrase, false otherwise.
- */
-function checkLetter() {
-	let found = false;
-	for (let i = 0; i < result.length; i++) {
-		if (currentLetter.charAt(0) === phrase.charAt(i)) {
-			result[i] = currentLetter;
-			totalToGuess--;
-			found = true;
-		}
-	}
-	if (!found) {
-		guessesLeft--;
-	}
-	return found;
 }
 
 /**
