@@ -1,5 +1,5 @@
 /**
- * Copyright 2023 Evan Earhart [, insert other contributor names here]
+ * Copyright 2023 Evan Earhart, Andrew LaMendola
  * 
  * This file contains the code that runs the Web Carnival Hangman game.
  * Following the basic rules of hangman, users input their guesses using the
@@ -24,7 +24,7 @@
  * @param {number} max The maximum the random number can be (exclusive).
  * @returns A random number between min (inclusive) and max (exlusive).
  */
-function getRandom(min, max) {
+ function getRandom(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
 }
 
@@ -108,6 +108,7 @@ function fillArray(phrase) {
  * @param {string} letter The letter entered by the user to process.
  */
 function processLetter(letter) {
+	console.log(letter + " was guessed; guesses = " + guessesLeft);
 	currentLetter = letter;
 	if (alreadyGuessed()) {
 		document.getElementById("message").innerHTML =
@@ -119,6 +120,10 @@ function processLetter(letter) {
 		document.getElementById("guessesLeft").innerHTML =
 				"Incorrect Guesses Left: " + guessesLeft;
 	}
+
+
+	buildHangman();
+	console.log("hangman built; guesses = " + guessesLeft);
 
 	if (totalToGuess === 0) {
 		userWon();
@@ -174,17 +179,131 @@ function checkLetter() {
 
 /**
  * Helper method for processLetter().
+ * Prints out the hangman animation based on how many guesses the user
+ * has left. Each time the user guesses incorrectly, another part of the 
+ * hangman is shown. Once the whole hangman is shown, the user has lost 
+ * the game.
+ */
+function buildHangman() {
+    if (guessesLeft === 5) {
+		drawHead();
+    } else if (guessesLeft === 4) {
+        drawTorso();
+    } else if (guessesLeft === 3) {
+        drawArm(25);
+    } else if (guessesLeft === 2) {
+        drawArm(75);
+    } else if (guessesLeft === 1) {
+        drawLeg(25);
+    } else if (guessesLeft === 0) {
+        drawLeg(75);
+		drawFace();
+    }
+}
+
+/**
+ * Helper method for buildHangman().
+ * Prints out the head of the hangman. The head of the hangman will only
+ * be shown once the user has guessed incorrectly at least one time. The
+ * head will remain printed out as the user continues to guess.
+ */
+function drawHead() {
+	var c = document.getElementById("hangman");
+	var ctx =  c.getContext("2d");
+	ctx.beginPath();
+	ctx.arc(50, 50, 25, 0, 2 * Math.PI, false);
+	ctx.stroke();
+}
+
+/**
+ * Helper method for buildHangman().
+ * Prints out the torso of the hangman. The torso of the hangman will only
+ * be shown once the use has guessed incorrectly at least two times. The 
+ * torso will remain printed out as the user continues to guess.
+ */
+function drawTorso() {
+	var c = document.getElementById("hangman");
+	var ctx =  c.getContext("2d");
+	ctx.beginPath();
+	ctx.moveTo(50, 75);
+	ctx.lineTo(50, 125);
+	ctx.stroke();
+}
+
+/**
+ * Helper method for buildHangman().
+ * Prints out the arms of the hangman. It will decide which arm to draw
+ * based on the x parameter.
+ * 
+ * @param {position} x The ending x coordinate of the arm.
+ */
+function drawArm(x) {
+	var c = document.getElementById("hangman");
+	var ctx =  c.getContext("2d");
+	ctx.beginPath();
+	ctx.moveTo(50, 90);
+	ctx.lineTo(x, 110);
+	ctx.stroke();
+}
+
+/**
+ * Helper method for buildHangman().
+ * Prints out the legs of the hangman. It will decide which leg to draw
+ * based on the x parameter.
+ * 
+ * @param {position} x The ending x coordinate of the leg.
+ */
+function drawLeg(x) {
+	var c = document.getElementById("hangman");
+	var ctx =  c.getContext("2d");
+	ctx.beginPath();
+	ctx.moveTo(50, 125);
+	ctx.lineTo(x, 155);
+	ctx.stroke();
+}
+
+/**
+ * Helper method for buildHangman().
+ * Prints out the face of the hangman. The face of the hangman will only
+ * be shown once the rest of the hangman has appeared.
+ */
+function drawFace() {
+	var c = document.getElementById("hangman");
+	var ctx =  c.getContext("2d");
+	ctx.beginPath();
+	ctx.moveTo(39, 37);
+	ctx.lineTo(45, 43);
+	ctx.moveTo(39, 43);
+	ctx.lineTo(45, 37);
+
+	ctx.moveTo(61, 37);
+	ctx.lineTo(55, 43);
+	ctx.moveTo(61, 43);
+	ctx.lineTo(55, 37);
+
+	ctx.moveTo(35, 60);
+	ctx.lineTo(65, 60);
+
+	ctx.arc(45, 60, 5, Math.PI, 2 * Math.PI, true);
+
+	ctx.stroke();
+}
+
+/**
+ * Helper method for processLetter().
  * If the user won the game, alert them, add the tickets to their account, and
  * redirect to the home page.
  */
 function userWon() {
-	alert("You Win!");
-	document.getElementById("gameArea").innerHTML =
+	var timer = setTimeout(function() {
+		alert("You Win!");
+		document.getElementById("gameArea").innerHTML =
 			"Adding tickets and redirecting...";
+		
+		// TODO: add tickets to account
 	
-	// TODO: add tickets to account
-	
-	window.location.replace("../index.html");
+		window.location.replace("../index.html");
+		}, 1000);
 }
 
 /**
@@ -192,8 +311,10 @@ function userWon() {
  * If the user lost the game, alert them, and redirect to the home page.
  */
 function userLost() {
-	alert("You Lost!");
-	document.getElementById("gameArea").innerHTML = "Redirecting...";
+	var time = setTimeout(function() {
+		alert("You Lost!");
+		document.getElementById("gameArea").innerHTML = "Redirecting...";
 
-	window.location.replace("../index.html");
+		window.location.replace("../index.html");
+	}, 1000);
 }
