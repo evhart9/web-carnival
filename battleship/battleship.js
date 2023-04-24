@@ -114,12 +114,25 @@ function generateAIShips() {
 }
 
 //This will be an array of the player's ships
-let playerShips = [new Ship([00, 01, 02], "Boaty mcBoatface"), new Ship([30,31,32,33,34,35,36,37,38,39,40], "Rowboat")];
-randomGuess();
-randomGuess();
-randomGuess();
-randomGuess();
-randomGuess();
+let playerShips = [new Ship([00, 01, 02], "Boaty mcBoatface"), new Ship([30, 31, 32, 33, 34, 35], "Rowboat")];
+aiTurn();
+aiTurn();
+aiTurn();
+aiTurn();
+
+aiTurn();
+aiTurn();
+aiTurn();
+
+aiTurn();
+aiTurn();
+aiTurn();
+aiTurn();
+aiTurn();
+aiTurn();
+aiTurn();
+aiTurn();
+aiTurn();
 console.log(playerShips);
 
 function rotateShip() {
@@ -244,6 +257,7 @@ function sinkShip(ship, shipArray, shipIndex) {
 	shipArray.splice(shipIndex, 1);
 	if(isAiTurn) {
 		aiDiscovery = false;
+		aiHits = [];
 	}
 }
 
@@ -269,6 +283,11 @@ function aiTurn() {
 	//TODO
 	isAiTurn = true;
 	//decide whether to use a random spot
+	if (aiDiscovery) {
+		smartGuess();
+	} else {
+		randomGuess();
+	}
 	//Run randomGuess();
 	//Alt run smartGuess();
 	//Check for a winner
@@ -277,11 +296,98 @@ function aiTurn() {
 }
 
 function randomGuess() {
+	console.log("RANDOM GUESS");
 	let randy = getRandom(0, spacesLeft - 1);
 	let guess = aiUnguessed.splice(randy, 1)[0];
 	console.log(guess);
 	processGuess(playerShips, guess);
 
+}
+
+function smartGuess() {
+	console.log("SMART GUESS");
+	let direction = ['N', 'E', 'S', 'W'];
+
+	if (aiHits.length == 1) {
+		let startingSpace = aiHits[0];
+		if (!aiUnguessed.includes(startingSpace - 10)) {
+			direction.splice(direction.indexOf('N'), 1);
+		}
+		if (!aiUnguessed.includes(startingSpace + 10)) {
+			direction.splice(direction.indexOf('S'), 1);
+		}
+
+		if (!aiUnguessed.includes(startingSpace - 1)) {
+			direction.splice(direction.indexOf('W'), 1);
+		}
+		if (!aiUnguessed.includes(startingSpace + 1)) {
+			direction.splice(direction.indexOf('E'), 1);
+		}
+
+		if (direction.length == 0) {
+			aiDiscovery = false;
+			return;
+		}
+
+		let guessDir = direction[getRandom(0, direction.length - 1)];
+		console.log(guessDir);
+		if (guessDir === 'N') {
+			console.log(startingSpace - 10);
+			processGuess(playerShips, startingSpace - 10);
+			aiUnguessed.splice(aiUnguessed.indexOf(startingSpace - 10), 1);
+		} else if (guessDir === 'S') {
+			console.log(startingSpace + 10);
+			processGuess(playerShips, startingSpace + 10);
+			aiUnguessed.splice(aiUnguessed.indexOf(startingSpace + 10), 1);
+		} else if (guessDir === 'W') {
+			console.log(startingSpace - 1);
+			processGuess(playerShips, startingSpace - 1);
+			aiUnguessed.splice(aiUnguessed.indexOf(startingSpace - 1), 1);
+		} else {
+			console.log(startingSpace + 1);
+			processGuess(playerShips, startingSpace + 1);
+			aiUnguessed.splice(aiUnguessed.indexOf(startingSpace + 1), 1);
+		}
+
+	} else if (aiHits.length > 1) {
+		let hitDiff = aiHits[0] - aiHits[1];
+		if (hitDiff == 10 || hitDiff == -10) {
+			if (aiUnguessed.includes(aiHits[aiHits.length - 1] - 10)) {
+				let guess = aiHits[aiHits.length - 1] - 10;
+				processGuess(playerShips, guess);
+				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
+				console.log(guess);
+			} else if (aiUnguessed.includes(aiHits[aiHits.length - 1] + 10)) {
+				let guess = aiHits[aiHits.length - 1] + 10;
+				processGuess(playerShips, guess);
+				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
+				console.log(guess);
+			} else {
+				//TODO: if this happens, it means this is two ships stacked ontop of eachother.
+				//I can make the ai handle that later, for now it's just gonna give up.
+				aiDiscovery = false;
+			}
+		} else if (hitDiff == 1 || hitDiff == -1) {
+			if (aiUnguessed.includes(aiHits[aiHits.length - 1] - 1)) {
+				let guess = aiHits[aiHits.length - 1] - 1;
+				processGuess(playerShips, guess);
+				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
+				console.log(guess);
+			} else if (aiUnguessed.includes(aiHits[aiHits.length - 1] + 1)) {
+				let guess = aiHits[aiHits.length - 1] + 1;
+				processGuess(playerShips, guess);
+				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
+				console.log(guess);
+			} else {
+				//TODO: if this happens, it means this is two ships next to eachother.
+				//I can make the ai handle that later, for now it's just gonna give up.
+				aiDiscovery = false;
+			}
+		}
+	} else {
+		console.log("ERROR! No hits have been recorded");
+		aiDiscovery = false;
+	}
 }
 
 /**
