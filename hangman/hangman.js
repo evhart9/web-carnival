@@ -49,7 +49,7 @@ function arrayToString(array) {
 
 // Gets the random phrase from the array of phrases in './dictionary.js'
 let phrase = phrases[getRandom(0, phrases.length)];
-console.log("random phrase: " + phrase);  // Prints to console for debugging
+//console.log("random phrase: " + phrase);  // Prints to console for debugging
 
 // Total number of characters that still needs to be guessed
 let totalToGuess = 0;
