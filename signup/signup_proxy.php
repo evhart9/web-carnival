@@ -14,8 +14,8 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 // Call the login function from the login.php file
-$result = signup($username, $password);
+//$result = signup($username, $password);
 
 // Return the result to the client-side code
-echo json_encode($result);
+//echo json_encode($result);
 
