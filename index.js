@@ -31,7 +31,14 @@ function playGame(game) {
  * Takes you to the login page.
  */
 function loginPage() {
+    window.location.href = "./login/login.html";
+}
 
+/**
+ * Takes you to the signup page.
+ */
+function signupPage() {
+    window.location.href = "./signup/signup.html";
 }
 
 /**
