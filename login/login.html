@@ -3,17 +3,48 @@
 <head>
   <title>Login</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="./login.css">
 </head>
+
+<header>
+  <div class="title">
+    <h1>Login Page</h1>
+  </div>
+</header>
+
 <body>
-  <form id="login-form" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <br>
-    <input type="submit" value="Login">
-  </form>
+
+  <div class="intro">
+    <p>
+        Welcome to the login page! This is where you can enter the username and password
+        that you created for this website. If you haven't created an account yet, go to the
+        signup page and create one!
+    </p>
+  </div>
+
+  <div>
+    <p>
+
+    </p>
+  </div>
+
+  <div class="login">
+    <form id="login-form" method="post">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <br>
+      <p>
+
+      </p>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <br>
+      <p>
+
+      </p>
+      <input type="submit" value="Login">
+    </form>
+  </div>
   <script src="./login.js"></script>
 </body>
 </html>

@@ -1,0 +1,19 @@
+body{
+    background-color: rgb(91, 167, 93);
+}
+
+.title {
+    font-size: 24px;
+    text-align: center;
+}
+
+.intro {
+    text-align: center;
+    font-size: 18px;
+    border: 3px solid black;
+}
+
+.login {
+    text-align: center;
+    font-size: 18px;
+}
