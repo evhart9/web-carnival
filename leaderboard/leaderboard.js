@@ -18,7 +18,9 @@ $(document).ready(function() {
         leaderboardHtml += '<div class=\"' + classLetter + classLabel + '\">' + user.username + '</div>';
         classLabel = classLabel + 1;
         leaderboardHtml += '<div class=\"' + classLetter + classLabel + '\">' + user.tickets + '</div>';
+
         classLetter = String.fromCharCode(classLetter.charCodeAt(0) + 1);
+        userNum = userNum + 1;
       });
       leaderboardHtml += '</div>';
 
