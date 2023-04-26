@@ -20,6 +20,12 @@ body{
     text-align: center;
 }
 
+.leaderboardHeader {
+    display: grid;
+    font-size: 22px;
+    text-align: center;
+}
+
 .a1 {
     grid-column: 1;
     grid-row: 1;

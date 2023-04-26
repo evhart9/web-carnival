@@ -8,11 +8,19 @@ $(document).ready(function() {
   .done(function(data) {
     if (data.success) {
       // Build HTML for leaderboard table
-      var leaderboardHtml = '<table><thead><tr><th>Username</th><th>Tickets</th></tr></thead><tbody>';
+      var leaderboardHtml = '<div class="places">';
+      var classLetter = 'a';
+      var userNum = 1;
       $.each(data.leaderboard, function(index, user) {
-        leaderboardHtml += '<tr><td>' + user.username + '</td><td>' + user.tickets + '</td></tr>';
+        var classLabel = 1;
+        leaderboardHtml += '<div class=\"' + classLetter + classLabel + '\">' + userNum + '.</div>';
+        classLabel = classLabel + 1;
+        leaderboardHtml += '<div class=\"' + classLetter + classLabel + '\">' + user.username + '</div>';
+        classLabel = classLabel + 1;
+        leaderboardHtml += '<div class=\"' + classLetter + classLabel + '\">' + user.tickets + '</div>';
+        classLetter = String.fromCharCode(classLetter.charCodeAt(0) + 1);
       });
-      leaderboardHtml += '</tbody></table>';
+      leaderboardHtml += '</div>';
 
       // Display leaderboard table on HTML page
       $('#leaderboard-container').html(leaderboardHtml);

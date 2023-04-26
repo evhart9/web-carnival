@@ -299,9 +299,9 @@ function userWon() {
 		alert("You Win!");
 		document.getElementById("gameArea").innerHTML =
 			"Adding tickets and redirecting...";
-		
+
 		addTickets();
-	
+
 		window.location.replace("../index.html");
 		}, 1000);
 }
