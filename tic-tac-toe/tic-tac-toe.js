@@ -189,13 +189,15 @@ function checkWin(player) {
  * redirect to the home page.
  */
 function userWon() {
-	alert("You Win!");
-	document.getElementById("gameArea").innerHTML =
+	//var time = setTimeout(function() {
+		alert("You Win!");
+		document.getElementById("gameArea").innerHTML =
 			"Adding tickets and redirecting...";
-	
-	// TODO: add tickets to account
-	
-	window.location.replace("../index.html");
+
+		addTickets();
+
+		window.location.replace("../index.html");
+		//}, 1000);
 }
 
 /**

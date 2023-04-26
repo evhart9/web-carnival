@@ -108,7 +108,7 @@ function fillArray(phrase) {
  * @param {string} letter The letter entered by the user to process.
  */
 function processLetter(letter) {
-	console.log(letter + " was guessed; guesses = " + guessesLeft);
+	//console.log(letter + " was guessed; guesses = " + guessesLeft);
 	currentLetter = letter;
 	if (alreadyGuessed()) {
 		document.getElementById("message").innerHTML =
@@ -123,7 +123,7 @@ function processLetter(letter) {
 
 
 	buildHangman();
-	console.log("hangman built; guesses = " + guessesLeft);
+	//console.log("hangman built; guesses = " + guessesLeft);
 
 	if (totalToGuess === 0) {
 		userWon();
@@ -300,7 +300,7 @@ function userWon() {
 		document.getElementById("gameArea").innerHTML =
 			"Adding tickets and redirecting...";
 		
-		// TODO: add tickets to account
+		addTickets();
 	
 		window.location.replace("../index.html");
 		}, 1000);

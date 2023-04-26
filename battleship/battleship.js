@@ -506,7 +506,7 @@ function userWon() {
 	document.getElementById("gameArea").innerHTML =
 			"Adding tickets and redirecting...";
 	
-	// TODO: add tickets to account
+	addTickets();
 	
 	window.location.replace("../index.html");
 }
