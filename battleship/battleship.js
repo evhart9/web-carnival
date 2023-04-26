@@ -1,11 +1,11 @@
 /**
- * Copyright 2023 Samantha Bowsher [, insert other contributor names here]
+ * Copyright 2023 Samantha Bowsher, Logan Smith [, insert other contributor names here]
  * 
  * This file contains the code that runs the Web Carnival Battleship game.
- * Following the basic rules of tic-tac-toe, users claim squares by clicking
- * on an open square on a 3x3 board. The user takes turns with an AI player
- * until one of them has claimed three spaces that form a straight line,
- * or until there are no more open spaces.
+ * Following the basic rules of Battleship, users guess squares by clicking
+ * on a square within the grid they have not guessed yet on a 10x10 board. 
+ * The user takes turns with an AI player until one of them has correctly 
+ * guessed each square containing the other players' ships.
  * 
  * IMPORTANT: Internally, spaces are tracked as integers 00-99. The first digit
  * is the column, and the last digit is the row. This can be checked with % 10 and /10.
@@ -154,9 +154,9 @@ function drawShips() {
 //--------------------------------------------PLAYER TURN--------------------------------------------//
 
 /**
- * This is the core method for tic-tac-toe. If the player presses
- * a button, run this method. It will attempt to claim the space, and if it does so successfully,
- * it will then run aiTurn(). If the space isn't open, it will exit immediately.
+ * This is the core method for Battleship. If the player presses
+ * a button, run this method. It will attempt to mark a space as guessed, and if it does so successfully,
+ * it will then run aiTurn(). If the space is guessed, it will exit immediately.
  * 
  * @param space the ID of the space the player clicked on.
  * */
