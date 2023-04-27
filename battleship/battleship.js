@@ -160,19 +160,36 @@ function drawShips() {
  * 
  * @param space the ID of the space the player clicked on.
  * */
-/*function playerTurn(space) {
-	//Ensure the space isn't already claimed. If it is, return immediately.
-	let open = isAvailable(space);
-	if (!open) {
-		return;
-	} 
+function playerTurn(space) {
+	//TODO
 
-	//Claim the space
-	claimSpace(space, true);
+	//Convert the ID to an int.
+
+	//Check if the guess hits anything
+
+	//Convert the space to a circle
+	console.log(space);
+	document.getElementById(space).onclick = null;
+
+	//Check for a win/loss
 
 	//Run aiTurn()
 	aiTurn();
-}*/
+}
+
+/**
+ * Helper method for playerTurn(). Takes the string ID of the space and converts it to
+ * a 2-digit int corresponding to the space. The first digit is the column and the second is 
+ * the row, so it's column-row order. For example, space 3D would return 23.
+ * @param {string} space The String ID of the space the player clicked.
+ * @returns {int} A number between 0-99 inclusive that corresponds with the space.
+ */
+function convertToNums(space) {
+	//TODO
+	let numSpace = 0;
+	return (numSpace);
+}
+
 /**
  * Check whether any opposing ships occupy the target spot.
  * @param {Ship[]} shipArray The ships to check.
@@ -301,6 +318,7 @@ function randomGuess() {
 	let guess = aiUnguessed.splice(randy, 1)[0];
 	console.log(guess);
 	processGuess(playerShips, guess);
+	spacesLeft--;
 
 }
 
@@ -384,6 +402,7 @@ function smartGuess() {
 				aiDiscovery = false;
 			}
 		}
+		spacesLeft--;
 	} else {
 		console.log("ERROR! No hits have been recorded");
 		aiDiscovery = false;
