@@ -45,47 +45,47 @@ main{
 
 #space2A {
 	border: solid black;
-	border-width: 0px 2px 2px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space3A {
 	border: solid black;
-	border-width: 0px 0px 2px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space4A {
 	border: solid black;
-	border-width: 0px 0px 2px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space5A {
 	border: solid black;
-	border-width: 0px 0px 2px 2px;
+	border-width:0px 2px 2px 0px;
 }
 
 #space6A {
 	border: solid black;
-	border-width: 0px 0px 2px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space7A {
 	border: solid black;
-	border-width: 0px 0px 2px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space8A {
 	border: solid black;
-	border-width: 0px 0px 2px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space9A {
 	border: solid black;
-	border-width: 0px 0px 2px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space10A {
 	border: solid black;
-	border-width: 0px 0px 2px 2px;
+	border-width: 0px 2px 2px 2px;
 }
 
 /**
@@ -94,52 +94,52 @@ main{
 
 #space1B {
 	border: solid black;
-	border-width: 2px 2px 2px 0px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space2B {
 	border: solid black;
-	border-width: 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space3B {
 	border: solid black;
-	border-width: 2px 0px 2px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space4B {
 	border: solid black;
-	border-width: 2px 0px 2px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space5B {
 	border: solid black;
-	border-width: 2px 0px 2px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space6B {
 	border: solid black;
-	border-width: 2px 0px 2px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space7B {
 	border: solid black;
-	border-width: 2px 0px 2px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space8B {
 	border: solid black;
-	border-width: 2px 0px 2px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space9B {
 	border: solid black;
-	border-width: 2px 0px 2px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space10B {
 	border: solid black;
-	border-width: 2px 0px 2px 2px;
+	border-width: 0px 2px 2px 2px;
 }
 
 /**
@@ -148,52 +148,52 @@ main{
 
 #space1C {
 	border: solid black;
-	border-width: 2px 2px 0px 0px;
+	border-width:0px 2px 2px 0px;
 }
 
 #space2C {
 	border: solid black;
-	border-width: 2px 2px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space3C {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space4C {
 	border: solid black;
-	border-width: 2px 2px 0px 0px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space5C {
 	border: solid black;
-	border-width: 2px 2px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space6C {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space7C {
 	border: solid black;
-	border-width: 2px 2px 0px 0px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space8C {
 	border: solid black;
-	border-width: 2px 2px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space9C {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space10C {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 2px;
 }
 
 /**
@@ -202,52 +202,52 @@ main{
 
 #space1D {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space2D {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space3D {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space4D {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space5D {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space6D {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space7D {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space8D {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space9D {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space10D {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 2px;
 }
 
 /**
@@ -256,52 +256,52 @@ main{
 
 #space1E {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space2E {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space3E {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space4E {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space5E {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space6E {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space7E {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space8E {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space9E {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space10E {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 2px;
 }
 
 /**
@@ -310,52 +310,52 @@ main{
 
 #space1F {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space2F {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space3F {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space4F {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space5F {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space6F {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space7F {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space8F {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space9F {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space10F {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 2px;
 }
 
 /**
@@ -364,52 +364,52 @@ main{
 
 #space1G {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space2G {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space3G {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space4G {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space5G {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space6G {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space7G {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space8G {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space9G {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space10G {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 2px;
 }
 
 /**
@@ -418,52 +418,52 @@ main{
 
 #space1H {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space2H {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space3H {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space4H {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space5H {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space6H {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space7H {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space8H {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space9H {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space10H {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 2px;
 }
 
 /**
@@ -472,52 +472,52 @@ main{
 
 #space1I {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space2I {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space3I {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space4I {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space5I {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space6I {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space7I {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space8I {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space9I {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 0px;
 }
 
 #space10I {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 0px 2px 2px 2px;
 }
 
 /**
@@ -526,52 +526,52 @@ main{
 
 #space1J {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 2px 2px 2px 0px;
 }
 
 #space2J {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 2px 2px 2px 0px;
 }
 
 #space3J {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 2px 2px 2px 0px;
 }
 
 #space4J {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 2px 2px 2px 0px;
 }
 
 #space5J {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 2px 2px 2px 0px;
 }
 
 #space6J {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 2px 2px 2px 0px;
 }
 
 #space7J {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 2px 2px 2px 0px;
 }
 
 #space8J {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 2px 2px 2px 0px;
 }
 
 #space9J {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 2px 2px 2px 0px;
 }
 
 #space10J {
 	border: solid black;
-	border-width: 2px 0px 0px 2px;
+	border-width: 2px;
 }
 
 
