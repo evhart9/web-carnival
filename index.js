@@ -47,10 +47,3 @@ function signupPage() {
 function leaderboard() {
     window.location.href = "./leaderboard/leaderboard.html"
 }
-
-/**
- * Takes you to the help page.
- */
-function helpPage() {
-
-}
