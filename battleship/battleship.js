@@ -80,7 +80,6 @@ function Ship(spaces, name) {
 let spacesLeft = 100;
 
 let aiUnguessed = [...Array(100).keys()];
-console.log(toColumn(aiUnguessed[67]));
 
 /*let aiUnguessed = [["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"],
 	["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10"],
@@ -97,7 +96,7 @@ console.log(toColumn(aiUnguessed[67]));
 
 //Generate AI ship placement
 let aiShips = generateAIShips();
-
+console.log(aiShips);
 let aiDiscovery = false; //Track whether a ship has been discovered, but not sunk.
 let aiHits = []; //Array to push hits to.  Clear once discovered ship is sunk.
 let isAiTurn = false; //QOL thin
@@ -124,25 +123,8 @@ let playerShips = [new Ship([00, 01], "Destroyer"),
 		   new Ship([20, 21, 22], "Cruiser"),
 		   new Ship([06, 16, 26, 36], "Battleship"),
 		   new Ship([25, 35, 45, 55, 65], "Carrier")];
-aiTurn();
-aiTurn();
-aiTurn();
-aiTurn();
 
-aiTurn();
-aiTurn();
-aiTurn();
-
-aiTurn();
-aiTurn();
-aiTurn();
-aiTurn();
-aiTurn();
-aiTurn();
-aiTurn();
-aiTurn();
-aiTurn();
-console.log(playerShips);
+//console.log(playerShips);
 
 function rotateShip() {
 	//TODO
@@ -172,16 +154,17 @@ function drawShips() {
 function playerTurn(space) {
 	//TODO
 
+	console.log(aiShips);
 	//Convert the ID to an int.
-
+	let guess = convertToNums(space);
 	//Check if the guess hits anything
-
+	processPlayerGuess(guess, space);
 	//Convert the space to a circle
-	console.log(space);
-	document.getElementById(space).onclick = null;
+	console.log(guess);
+	
 
 	//Check for a win/loss
-
+	checkForWin();
 	//Run aiTurn()
 	aiTurn();
 }
@@ -194,8 +177,49 @@ function playerTurn(space) {
  * @returns {int} A number between 0-99 inclusive that corresponds with the space.
  */
 function convertToNums(space) {
-	//TODO
 	let numSpace = 0;
+	let subs = space.substring(5);
+
+	//There is certainly a more efficient way to do this, but I don't think it's worth investing the time.
+	if (subs.includes("10")) {
+		numSpace += 90;
+	} else if (subs.includes("9")) {
+		numSpace += 80;
+	} else if (subs.includes("8")) {
+		numSpace += 70;
+	} else if (subs.includes("7")) {
+		numSpace += 60;
+	} else if (subs.includes("6")) {
+		numSpace += 50;
+	} else if (subs.includes("5")) {
+		numSpace += 40;
+	} else if (subs.includes("4")) {
+		numSpace += 30;
+	} else if (subs.includes("3")) {
+		numSpace += 20;
+	} else if (subs.includes("2")) {
+		numSpace += 10;
+	} //Skip 1, that would just add 0.
+
+	if (subs.includes("B")) {
+		numSpace += 1;
+	} else if (subs.includes("C")) {
+		numSpace += 2;
+	} else if (subs.includes("D")) {
+		numSpace += 3;
+	} else if (subs.includes("E")) {
+		numSpace += 4;
+	} else if (subs.includes("F")) {
+		numSpace += 5;
+	} else if (subs.includes("G")) {
+		numSpace += 6;
+	} else if (subs.includes("H")) {
+		numSpace += 7;
+	} else if (subs.includes("I")) {
+		numSpace += 8;
+	} else if (subs.includes("J")) {
+		numSpace += 9;
+	} 
 	return (numSpace);
 }
 
@@ -234,11 +258,11 @@ function hitShip(shipArray, target) {
 	for( let i = 0; i < mark.spaces.length; i++){ 
     
 		//If you find the ship where you were looking
-        if ( mark[i] == target) { 
+		if (mark.spaces[i] == target) { 
 			spaceIndex = i;
         }
     
-    }
+	}
 
 	//Remove the space from mark.spaces.
 	mark.spaces.splice(spaceIndex, 1); 
@@ -287,19 +311,39 @@ function sinkShip(ship, shipArray, shipIndex) {
 	}
 }
 
-function processGuess(shipArray, target) {
+function processAIGuess(shipArray, target) {
 	if(checkForHits(shipArray, target)) {
 		console.log("Hit");
-		if(isAiTurn) {
-			aiDiscovery = true;
-			aiHits.push(target);
-		}
+		aiDiscovery = true;
+		aiHits.push(target);
 		//TODO: Draw a red circle on the grid?
 		hitShip(shipArray, target);
 		
 	} else {
 		console.log("Miss");
 		//TODO: Draw a black circle on the grid?
+	}
+}
+
+function processPlayerGuess(target, spaceID) {
+	if (checkForHits(aiShips, target)) {
+		console.log("Hit");
+		hitShip(aiShips, target);
+		drawCircle(spaceID, true);
+	} else {
+		console.log("Miss");
+		drawCircle(spaceID, false);
+	}
+	
+}
+
+function drawCircle(spaceID, isHit) {
+	document.getElementById(spaceID).onclick = null;
+	document.getElementById(spaceID).innerHTML = '&bull;';
+	if (isHit) {
+		document.getElementById(spaceID).classList.add('hitSpace');
+	} else {
+		document.getElementById(spaceID).classList.add('missSpace');
 	}
 }
 
@@ -314,25 +358,24 @@ function aiTurn() {
 	} else {
 		randomGuess();
 	}
-	//Run randomGuess();
-	//Alt run smartGuess();
 	//Check for a winner
+	checkForWin();
 	//Update board?
 	isAiTurn = false;
 }
 
 function randomGuess() {
-	console.log("RANDOM GUESS");
+	//console.log("RANDOM GUESS");
 	let randy = getRandom(0, spacesLeft - 1);
 	let guess = aiUnguessed.splice(randy, 1)[0];
-	console.log(guess);
-	processGuess(playerShips, guess);
+	//console.log(guess);
+	processAIGuess(playerShips, guess);
 	spacesLeft--;
 
 }
 
 function smartGuess() {
-	console.log("SMART GUESS");
+	//console.log("SMART GUESS");
 	let direction = ['N', 'E', 'S', 'W'];
 
 	if (aiHits.length == 1) {
@@ -357,22 +400,22 @@ function smartGuess() {
 		}
 
 		let guessDir = direction[getRandom(0, direction.length - 1)];
-		console.log(guessDir);
+		//console.log(guessDir);
 		if (guessDir === 'N') {
-			console.log(startingSpace - 10);
-			processGuess(playerShips, startingSpace - 10);
+			//console.log(startingSpace - 10);
+			processAIGuess(playerShips, startingSpace - 10);
 			aiUnguessed.splice(aiUnguessed.indexOf(startingSpace - 10), 1);
 		} else if (guessDir === 'S') {
-			console.log(startingSpace + 10);
-			processGuess(playerShips, startingSpace + 10);
+			//console.log(startingSpace + 10);
+			processAIGuess(playerShips, startingSpace + 10);
 			aiUnguessed.splice(aiUnguessed.indexOf(startingSpace + 10), 1);
 		} else if (guessDir === 'W') {
-			console.log(startingSpace - 1);
-			processGuess(playerShips, startingSpace - 1);
+			//console.log(startingSpace - 1);
+			processAIGuess(playerShips, startingSpace - 1);
 			aiUnguessed.splice(aiUnguessed.indexOf(startingSpace - 1), 1);
 		} else {
-			console.log(startingSpace + 1);
-			processGuess(playerShips, startingSpace + 1);
+			//console.log(startingSpace + 1);
+			processAIGuess(playerShips, startingSpace + 1);
 			aiUnguessed.splice(aiUnguessed.indexOf(startingSpace + 1), 1);
 		}
 
@@ -381,14 +424,14 @@ function smartGuess() {
 		if (hitDiff == 10 || hitDiff == -10) {
 			if (aiUnguessed.includes(aiHits[aiHits.length - 1] - 10)) {
 				let guess = aiHits[aiHits.length - 1] - 10;
-				processGuess(playerShips, guess);
+				processAIGuess(playerShips, guess);
 				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
-				console.log(guess);
+				//console.log(guess);
 			} else if (aiUnguessed.includes(aiHits[aiHits.length - 1] + 10)) {
 				let guess = aiHits[aiHits.length - 1] + 10;
-				processGuess(playerShips, guess);
+				processAIGuess(playerShips, guess);
 				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
-				console.log(guess);
+				//console.log(guess);
 			} else {
 				//TODO: if this happens, it means this is two ships stacked ontop of eachother.
 				//I can make the ai handle that later, for now it's just gonna give up.
@@ -397,14 +440,14 @@ function smartGuess() {
 		} else if (hitDiff == 1 || hitDiff == -1) {
 			if (aiUnguessed.includes(aiHits[aiHits.length - 1] - 1)) {
 				let guess = aiHits[aiHits.length - 1] - 1;
-				processGuess(playerShips, guess);
+				processAIGuess(playerShips, guess);
 				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
-				console.log(guess);
+				//console.log(guess);
 			} else if (aiUnguessed.includes(aiHits[aiHits.length - 1] + 1)) {
 				let guess = aiHits[aiHits.length - 1] + 1;
-				processGuess(playerShips, guess);
+				processAIGuess(playerShips, guess);
 				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
-				console.log(guess);
+				//console.log(guess);
 			} else {
 				//TODO: if this happens, it means this is two ships next to eachother.
 				//I can make the ai handle that later, for now it's just gonna give up.
@@ -419,110 +462,16 @@ function smartGuess() {
 }
 
 /**
- * Helper method for playerTurn(). Runs after a successful turn if 
- * the game hasn't ended, placing an o instead of an x to represent the ai.
- * Currently, the ai picks a random open square.
- * */
-/*function aiTurn() {
-	let max = openSpaces.length;
-	let randy = Math.floor(Math.random() * max);
-	claimSpace(openSpaces[randy], false);
-}*/
-
-/**
- * Helper method for playerTurn() and ai(Turn)
- * This method converts an empty space to a claimed space.
- * If this causes there to be three claimed spaces in a row,
- * determine who won. If the number of available spaces reaches
- * 0, end the game in a tie.
- * 
- * @param space The ID of the space to be claimed.
- * @param isX Boolean value to track which side gets the space.
- * */
-/*function claimSpace(space, isX) {
-	let gameEnd = false;
-
-	//Remove the space from open spaces
-	let removal = openSpaces.indexOf(space);
-	openSpaces.splice(removal, 1);
-
-	//Set the space to the appropriate character and add it to the corresponding claimed spaces.
-	//Then, check if that causes the game to end.
-	if (isX) {
-		document.getElementById(space).innerHTML = 'X';
-		document.getElementById(space).style.color = "black";
-		claimedX[spaces.indexOf(space)] = true;
-		gameEnd = checkWin(claimedX);
-	} else {
-		document.getElementById(space).innerHTML = 'O';
-		document.getElementById(space).style.color = "black";
-		claimedO[spaces.indexOf(space)] = true;
-		gameEnd = checkWin(claimedO);
+ * Helper method for aiTurn() and playerTurn()
+ * Checks for a win, and then uses the appropriate method.
+ */
+function checkForWin() {
+	if (playerShips.length == 0) {
+		userLost();
+	} else if (aiShips.length == 0) {
+		userWon();
 	}
-
-	//If the game is over, determine the winner and run the corresponding method.
-	if (gameEnd) {
-		if (isX)
-			userWon();
-		else
-			userLost();
-	}
-
-	//Decrement spacesLeft, then check whether there is a tie.
-	spacesLeft--;
-
-	if (spacesLeft == 0) {
-		userTied();
-	}
-
-	//If gameplay continues, continue game.
-}*/
-
-/**
- * Helper method for playerTurn()
- * Returns true if the space does not contain an X or an O, false otherwise.
- * @param spaceID The space to check
- * @returns boolean true if the space does not contain an X or an O.
- * */
-/*function isAvailable(spaceID) {
-	let spaceText = document.getElementById(spaceID).innerHTML;
-	if (spaceText === "X") {
-		return false;
-	} else if (spaceText === "O") {
-		return false;
-	}
-	return true;
-}*/
-
-/**
- * Helper method for claimSpace()
- * Runs through each possible 3-in-a-row sequence, and if any of them are
- * owned by player, returns true. Otherwise returns false.
- * 
- * @param player Boolean array of claimed spaces. If a space is claimed by the player, 
- * its respective slot will be true. Otherwise, it will be false.
- * @returns true if any win condition is met, otherwise returns false.
- * */
-/*function checkWin(player) {
-	if (player[0] && player[1] && player[2])
-		return true;
-	else if (player[0] && player[3] && player[6])
-		return true;
-	else if (player[1] && player[4] && player[7])
-		return true;
-	else if (player[2] && player[5] && player[8])
-		return true;
-	else if (player[0] && player[4] && player[8])
-		return true;
-	else if (player[2] && player[4] && player[6])
-		return true;
-	else if (player[3] && player[4] && player[5])
-		return true;
-	else if (player[6] && player[7] && player[8])
-		return true;
-	else
-		return false;
-}*/
+}
 
 /**
  * Helper method for processLetter() and for claimSpace().

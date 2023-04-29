@@ -29,9 +29,19 @@ main{
 	height: 50px;
 	margin: 0px;
 	color: rgba(0,0,0,0);
-	font-size: 16px;
+	font-size: 36px;
 	text-align: center;
 	clear: both;
+}
+
+.hitSpace {
+	color: red;
+	font-weight: bold;
+}
+
+.missSpace {
+	color: black;
+	font-weight: bold;
 }
 
 /**
