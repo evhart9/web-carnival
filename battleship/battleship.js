@@ -75,15 +75,11 @@ function Ship(spaces, name) {
 }
 
 //----------------------------------------------PREGAME----------------------------------------------//
-
-//Number of spaces the AI has yet to guess
-let spacesLeft = 100;
-
 let aiUnguessed = [...Array(100).keys()];
 
 //Generate AI ship placement
 let aiShips = generateAIShips();
-console.log(aiShips);
+//console.log(aiShips); //DISABLE THIS BEFORE THE SITE GOES LIVE
 let aiDiscovery = false; //Track whether a ship has been discovered, but not sunk.
 let aiHits = []; //Array to push hits to.  Clear once discovered ship is sunk.
 let isAiTurn = false; //QOL thin
@@ -91,24 +87,29 @@ let isAiTurn = false; //QOL thin
 /**
  * */
 function generateAIShips() {
-	//TODO
-	//Option one: preset list of AI ship placements that it randomly picks from.
-	//Option two: generate random ship placements.
-	//Option one is more efficient and probably going to give better placements than option two.
-	//Ships should be 2,3,3,4,5 with those names below
-	let shipArray = [new Ship([00, 01], "Destroyer"), 
-		   	new Ship([30, 31, 32], "Submarine"),
-		   	new Ship([20, 21, 22], "Cruiser"),
-		   	new Ship([06, 16, 26, 36], "Battleship"),
-		   	new Ship([25, 35, 45, 55, 65], "Carrier")];
+	let shipArray = [new Ship([], "Destroyer"),
+	new Ship([], "Submarine"),
+	new Ship([], "Cruiser"),
+	new Ship([], "Battleship"),
+	new Ship([], "Carrier")];
+
+	let placementStrings = layouts[getRandom(0, layouts.length)].split(";");
+	console.log(placementStrings);
+	for (i = 0; i < placementStrings.length; i++) {
+		for (j = 0; j < placementStrings[i].length; j += 2) {
+			let space = placementStrings[i].substring(j, j + 2);
+			let spaceNum = 1 * space;
+			shipArray[i].spaces.push(spaceNum);
+		}
+	}
 	return shipArray;
 }
 
 //This will be an array of the player's ships
 let playerShips = [new Ship([00, 01], "Destroyer"), 
-		   new Ship([30, 31, 32], "Submarine"),
+		   new Ship([40, 41, 42], "Submarine"),
 		   new Ship([20, 21, 22], "Cruiser"),
-		   new Ship([06, 16, 26, 36], "Battleship"),
+		   new Ship([07, 17, 27, 37], "Battleship"),
 		   new Ship([25, 35, 45, 55, 65], "Carrier")];
 
 //console.log(playerShips);
@@ -140,15 +141,10 @@ function drawShips() {
  * */
 function playerTurn(space) {
 	//TODO
-
-	console.log(aiShips);
 	//Convert the ID to an int.
 	let guess = convertToNums(space);
 	//Check if the guess hits anything
 	processPlayerGuess(guess, space);
-	//Convert the space to a circle
-	console.log(guess);
-	
 
 	//Check for a win/loss
 	checkForWin();
@@ -302,11 +298,11 @@ function sinkShip(ship, shipArray, shipIndex) {
 
 function processPlayerGuess(target, spaceID) {
 	if (checkForHits(aiShips, target)) {
-		console.log("Hit");
+		//console.log("Hit");
 		hitShip(aiShips, target);
 		drawCircle(spaceID, true);
 	} else {
-		console.log("Miss");
+		//console.log("Miss");
 		drawCircle(spaceID, false);
 	}
 	
@@ -335,22 +331,26 @@ function aiTurn() {
 	}
 	//Check for a winner
 	checkForWin();
-	//Update board?
 	isAiTurn = false;
 }
 
+/**
+ * Helper method for aiTurn()
+ * Randomly guesses a space that hasn't been guessed yet.
+ */
 function randomGuess() {
-	//console.log("RANDOM GUESS");
-	let randy = getRandom(0, spacesLeft - 1);
+	let randy = getRandom(0, aiUnguessed.length);
 	let guess = aiUnguessed.splice(randy, 1)[0];
-	//console.log(guess);
 	processAIGuess(playerShips, guess);
-	spacesLeft--;
-
 }
 
+/**
+ * Helper method for aiTurn()
+ * If it only has one successful hit, it guesses an unguessed spot that is adjacent
+ * to that hit. Once it identifies two hits next to eachother, it will guess a straight
+ * line until it sinks the ship.
+ */
 function smartGuess() {
-	//console.log("SMART GUESS");
 	let direction = ['N', 'E', 'S', 'W'];
 
 	if (aiHits.length == 1) {
@@ -371,25 +371,22 @@ function smartGuess() {
 
 		if (direction.length == 0) {
 			aiDiscovery = false;
+			aiHits = [];
+			randomGuess();
 			return;
 		}
 
-		let guessDir = direction[getRandom(0, direction.length - 1)];
-		//console.log(guessDir);
+		let guessDir = direction[getRandom(0, direction.length)];
 		if (guessDir === 'N') {
-			//console.log(startingSpace - 10);
 			processAIGuess(playerShips, startingSpace - 10);
 			aiUnguessed.splice(aiUnguessed.indexOf(startingSpace - 10), 1);
 		} else if (guessDir === 'S') {
-			//console.log(startingSpace + 10);
 			processAIGuess(playerShips, startingSpace + 10);
 			aiUnguessed.splice(aiUnguessed.indexOf(startingSpace + 10), 1);
 		} else if (guessDir === 'W') {
-			//console.log(startingSpace - 1);
 			processAIGuess(playerShips, startingSpace - 1);
 			aiUnguessed.splice(aiUnguessed.indexOf(startingSpace - 1), 1);
 		} else {
-			//console.log(startingSpace + 1);
 			processAIGuess(playerShips, startingSpace + 1);
 			aiUnguessed.splice(aiUnguessed.indexOf(startingSpace + 1), 1);
 		}
@@ -401,35 +398,36 @@ function smartGuess() {
 				let guess = aiHits[aiHits.length - 1] - 10;
 				processAIGuess(playerShips, guess);
 				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
-				//console.log(guess);
 			} else if (aiUnguessed.includes(aiHits[aiHits.length - 1] + 10)) {
 				let guess = aiHits[aiHits.length - 1] + 10;
 				processAIGuess(playerShips, guess);
 				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
-				//console.log(guess);
 			} else {
 				//TODO: if this happens, it means this is two ships stacked ontop of eachother.
 				//I can make the ai handle that later, for now it's just gonna give up.
 				aiDiscovery = false;
+				aiHits = [];
+				randomGuess();
+				return;
 			}
 		} else if (hitDiff == 1 || hitDiff == -1) {
 			if (aiUnguessed.includes(aiHits[aiHits.length - 1] - 1)) {
 				let guess = aiHits[aiHits.length - 1] - 1;
 				processAIGuess(playerShips, guess);
 				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
-				//console.log(guess);
 			} else if (aiUnguessed.includes(aiHits[aiHits.length - 1] + 1)) {
 				let guess = aiHits[aiHits.length - 1] + 1;
 				processAIGuess(playerShips, guess);
 				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
-				//console.log(guess);
 			} else {
 				//TODO: if this happens, it means this is two ships next to eachother.
 				//I can make the ai handle that later, for now it's just gonna give up.
 				aiDiscovery = false;
+				aiHits = [];
+				randomGuess();
+				return;
 			}
 		}
-		spacesLeft--;
 	} else {
 		console.log("ERROR! No hits have been recorded");
 		aiDiscovery = false;
@@ -439,17 +437,23 @@ function smartGuess() {
 function processAIGuess(shipArray, target) {
 	let spaceID = convertEnemySpaceToID(target);
 	if (checkForHits(shipArray, target)) {
-		console.log("Hit");
+		//console.log("Hit");
 		aiDiscovery = true;
 		aiHits.push(target);
 		hitShip(shipArray, target);
 		drawCircle(spaceID, true);
 	} else {
-		console.log("Miss");
+		//console.log("Miss");
 		drawCircle(spaceID, false);
 	}
 }
 
+/**
+ * Helper method for processAIGuess()
+ * Takes a space in int form (e.g. 23) and returns the ID of the corresponding space (e.g. "enemy3D").
+ * @param {any} space The integer to convert into a space ID.
+ * @returns {string} The corresponding ID of a square on the enemy's board.
+ */
 function convertEnemySpaceToID(space) {
 	let spaceID = 'enemy';
 	spaceID += toColumn(space) + 1;
