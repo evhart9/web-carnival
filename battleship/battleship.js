@@ -109,12 +109,21 @@ function generateAIShips() {
 	//Option one: preset list of AI ship placements that it randomly picks from.
 	//Option two: generate random ship placements.
 	//Option one is more efficient and probably going to give better placements than option two.
-	let shipArray = [new Ship([00, 01], "Battleship")];
+	//Ships should be 2,3,3,4,5 with those names below
+	let shipArray = [new Ship([00, 01], "Destroyer"), 
+		   	new Ship([30, 31, 32], "Submarine"),
+		   	new Ship([20, 21, 22], "Cruiser"),
+		   	new Ship([06, 16, 26, 36], "Battleship"),
+		   	new Ship([25, 35, 45, 55, 65], "Carrier")];
 	return shipArray;
 }
 
 //This will be an array of the player's ships
-let playerShips = [new Ship([00, 01, 02], "Boaty mcBoatface"), new Ship([30, 31, 32, 33, 34, 35], "Rowboat")];
+let playerShips = [new Ship([00, 01], "Destroyer"), 
+		   new Ship([30, 31, 32], "Submarine"),
+		   new Ship([20, 21, 22], "Cruiser"),
+		   new Ship([06, 16, 26, 36], "Battleship"),
+		   new Ship([25, 35, 45, 55, 65], "Carrier")];
 aiTurn();
 aiTurn();
 aiTurn();
