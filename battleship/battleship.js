@@ -94,7 +94,7 @@ function generateAIShips() {
 	new Ship([], "Carrier")];
 
 	let placementStrings = layouts[getRandom(0, layouts.length)].split(";");
-	console.log(placementStrings);
+	//console.log(placementStrings); //DISABLE THIS BEFORE THE SITE GOES LIVE
 	for (i = 0; i < placementStrings.length; i++) {
 		for (j = 0; j < placementStrings[i].length; j += 2) {
 			let space = placementStrings[i].substring(j, j + 2);
@@ -402,6 +402,14 @@ function smartGuess() {
 				let guess = aiHits[aiHits.length - 1] + 10;
 				processAIGuess(playerShips, guess);
 				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
+			} else if (aiUnguessed.includes(aiHits[0] + 10)) {
+				let guess = aiHits[0] + 10;
+				processAIGuess(playerShips, guess);
+				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
+			} else if (aiUnguessed.includes(aiHits[0] - 10)) {
+				let guess = aiHits[0] - 10;
+				processAIGuess(playerShips, guess);
+				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
 			} else {
 				//TODO: if this happens, it means this is two ships stacked ontop of eachother.
 				//I can make the ai handle that later, for now it's just gonna give up.
@@ -417,6 +425,14 @@ function smartGuess() {
 				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
 			} else if (aiUnguessed.includes(aiHits[aiHits.length - 1] + 1)) {
 				let guess = aiHits[aiHits.length - 1] + 1;
+				processAIGuess(playerShips, guess);
+				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
+			} else if (aiUnguessed.includes(aiHits[0] + 1)) {
+				let guess = aiHits[0] + 1;
+				processAIGuess(playerShips, guess);
+				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
+			} else if (aiUnguessed.includes(aiHits[0] - 1)) {
+				let guess = aiHits[0] - 1;
 				processAIGuess(playerShips, guess);
 				aiUnguessed.splice(aiUnguessed.indexOf(guess), 1);
 			} else {
