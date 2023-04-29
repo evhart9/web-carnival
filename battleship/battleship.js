@@ -81,19 +81,6 @@ let spacesLeft = 100;
 
 let aiUnguessed = [...Array(100).keys()];
 
-/*let aiUnguessed = [["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"],
-	["B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10"],
-	["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "C10"],
-	["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10"],
-	["E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10"],
-	["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10"],
-	["G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8", "G9", "G10"],
-	["H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9", "H10"],
-	["I1", "I2", "I3", "I4", "I5", "I6", "I7", "I8", "I9", "I10"],
-	["J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10"]];*/
-
-//let playerUnguessed = [...aiUnguessed];
-
 //Generate AI ship placement
 let aiShips = generateAIShips();
 console.log(aiShips);
@@ -311,19 +298,7 @@ function sinkShip(ship, shipArray, shipIndex) {
 	}
 }
 
-function processAIGuess(shipArray, target) {
-	if(checkForHits(shipArray, target)) {
-		console.log("Hit");
-		aiDiscovery = true;
-		aiHits.push(target);
-		//TODO: Draw a red circle on the grid?
-		hitShip(shipArray, target);
-		
-	} else {
-		console.log("Miss");
-		//TODO: Draw a black circle on the grid?
-	}
-}
+
 
 function processPlayerGuess(target, spaceID) {
 	if (checkForHits(aiShips, target)) {
@@ -459,6 +434,59 @@ function smartGuess() {
 		console.log("ERROR! No hits have been recorded");
 		aiDiscovery = false;
 	}
+}
+
+function processAIGuess(shipArray, target) {
+	let spaceID = convertEnemySpaceToID(target);
+	if (checkForHits(shipArray, target)) {
+		console.log("Hit");
+		aiDiscovery = true;
+		aiHits.push(target);
+		hitShip(shipArray, target);
+		drawCircle(spaceID, true);
+	} else {
+		console.log("Miss");
+		drawCircle(spaceID, false);
+	}
+}
+
+function convertEnemySpaceToID(space) {
+	let spaceID = 'enemy';
+	spaceID += toColumn(space) + 1;
+	let row = toRow(space);
+	switch (row) {
+		case 0:
+			spaceID += 'A';
+			break;
+		case 1:
+			spaceID += 'B';
+			break;
+		case 2:
+			spaceID += 'C';
+			break;
+		case 3:
+			spaceID += 'D';
+			break;
+		case 4:
+			spaceID += 'E';
+			break;
+		case 5:
+			spaceID += 'F';
+			break;
+		case 6:
+			spaceID += 'G';
+			break;
+		case 7:
+			spaceID += 'H';
+			break;
+		case 8:
+			spaceID += 'I';
+			break;
+		case 9:
+			spaceID += 'J';
+			break;
+	}
+	return spaceID;
 }
 
 /**

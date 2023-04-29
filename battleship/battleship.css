@@ -21,10 +21,19 @@ main{
 .board {
 	margin: auto;
 	font-family: Courier New, Courier, monospace;
-	
 }
 
 .openSpace {
+	width: 50px;
+	height: 50px;
+	margin: 0px;
+	color: rgba(0,0,0,0);
+	font-size: 36px;
+	text-align: center;
+	clear: both;
+}
+
+.enemySpace {
 	width: 50px;
 	height: 50px;
 	margin: 0px;
@@ -580,6 +589,548 @@ main{
 }
 
 #space10J {
+	border: solid black;
+	border-width: 2px;
+}
+
+/*ENEMY SPACES*/
+
+/**
+ * Enemy Spaces A1-A10
+ */
+
+#enemy1A {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy2A {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy3A {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy4A {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy5A {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy6A {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy7A {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy8A {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy9A {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy10A {
+	border: solid black;
+	border-width: 2px 2px 0px 2px;
+}
+
+/**
+ * Enemy Spaces B1-B10
+ */
+
+#enemy1B {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy2B {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy3B {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy4B {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy5B {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy6B {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy7B {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy8B {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy9B {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy10B {
+	border: solid black;
+	border-width: 2px 2px 0px 2px;
+}
+
+/**
+ * Enemy Spaces C1-C10
+ */
+
+#enemy1C {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy2C {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy3C {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy4C {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy5C {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy6C {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy7C {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy8C {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy9C {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy10C {
+	border: solid black;
+	border-width: 2px 2px 0px 2px;
+}
+
+/**
+ * Enemy Spaces D1-D10
+ */
+
+#enemy1D {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy2D {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy3D {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy4D {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy5D {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy6D {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy7D {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy8D {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy9D {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy10D {
+	border: solid black;
+	border-width: 2px 2px 0px 2px;
+}
+
+/**
+ * Enemy Spaces E1-E10
+ */
+
+#enemy1E {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy2E {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy3E {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy4E {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy5E {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy6E {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy7E {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy8E {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy9E {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy10E {
+	border: solid black;
+	border-width: 2px 2px 0px 2px;
+}
+
+/**
+ * Enemy Spaces F1-F10
+ */
+
+#enemy1F {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy2F {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy3F {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy4F {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy5F {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy6F {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy7F {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy8F {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy9F {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy10F {
+	border: solid black;
+	border-width: 2px 2px 0px 2px;
+}
+
+/**
+ * Enemy Spaces G1-G10
+ */
+
+#enemy1G {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy2G {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy3G {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy4G {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy5G {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy6G {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy7G {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy8G {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy9G {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy10G {
+	border: solid black;
+	border-width: 2px 2px 0px 2px;
+}
+
+/**
+ * Enemy Spaces H1-H10
+ */
+
+#enemy1H {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy2H {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy3H {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy4H {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy5H {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy6H {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy7H {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy8H {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy9H {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy10H {
+	border: solid black;
+	border-width: 2px 2px 0px 2px;
+}
+
+/**
+ * Enemy Spaces I1-I10
+ */
+
+#enemy1I {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy2I {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy3I {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy4I {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy5I {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy6I {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy7I {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy8I {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy9I {
+	border: solid black;
+	border-width: 2px 0px 0px 2px;
+}
+
+#enemy10I {
+	border: solid black;
+	border-width: 2px 2px 0px 2px;
+}
+
+/**
+ * Enemy Spaces J1-J10
+ */
+
+#enemy1J {
+	border: solid black;
+	border-width: 2px 0px 2px 2px;
+}
+
+#enemy2J {
+	border: solid black;
+	border-width: 2px 0px 2px 2px;
+}
+
+#enemy3J {
+	border: solid black;
+	border-width: 2px 0px 2px 2px;
+}
+
+#enemy4J {
+	border: solid black;
+	border-width: 2px 0px 2px 2px;
+}
+
+#enemy5J {
+	border: solid black;
+	border-width: 2px 0px 2px 2px;
+}
+
+#enemy6J {
+	border: solid black;
+	border-width: 2px 0px 2px 2px;
+}
+
+#enemy7J {
+	border: solid black;
+	border-width: 2px 0px 2px 2px;
+}
+
+#enemy8J {
+	border: solid black;
+	border-width: 2px 0px 2px 2px;
+}
+
+#enemy9J {
+	border: solid black;
+	border-width: 2px 0px 2px 2px;
+}
+
+#enemy10J {
 	border: solid black;
 	border-width: 2px;
 }
